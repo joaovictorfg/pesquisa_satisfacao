@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'form/form_page.dart';
-import 'adm/login_page.dart';
 import 'widget/button.dart';
-import 'adm/admin_page.dart';
 
 class HomePage extends StatelessWidget {
   final Color Function(String) hexToColor;
@@ -37,22 +35,6 @@ class HomePage extends StatelessWidget {
         title: const Text('Pesquisa de Satisfação', style: TextStyle(color: Colors.white)),
         backgroundColor: hexToColor('275316'),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.login, color: Colors.white),
-            onPressed: () async {
-              final loginSucesso = await Navigator.of(context).push<bool>(
-                MaterialPageRoute(builder: (_) => const LoginPage()),
-              );
-
-              if (loginSucesso == true) {
-                Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const AdminPage()),
-                );
-              }
-            },
-          ),
-        ],
       ),
       body: Center(
         child: permitido
@@ -68,7 +50,7 @@ class HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 30),
             SizedBox(
-              width: 300, // largura fixa para o botão
+              width: 300,
               child: BotaoPadrao(
                 texto: 'Iniciar Pesquisa',
                 icone: Icons.insert_drive_file,
